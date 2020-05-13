@@ -63,9 +63,28 @@ li{
   width: var(--sidebar-width);
   height: 103%;
   padding: 0.6in var(--sidebar-horizontal-padding);
-  background-color: #80D8FF;
   font-size: 8.5pt;
+  background: #fff;
+  transition: box-shadow 135ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 1px 0 rgba(66, 66, 66, 0.08), 0 1px 3px 1px rgba(66, 66, 66, 0.16);
+  transition: width 235ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 3px;
+  z-index: 1;
+
 }
+.download-content {
+  text-align: center;
+  padding: 5px;
+  background: #1a73e8;
+  color: white;
+  border: 1px solid #1a73e8;
+  border-radius: 5px;
+}
+.download-content  a {
+  color: white;
+  font-weight: bold;
+}
+
 
 /* main */
 
@@ -155,6 +174,7 @@ li{
 .blocks{
   display: flex;
   flex-flow: row nowrap;
+  
 }
 
 .blocks > div{
@@ -369,3 +389,22 @@ li{
   font-weight: 400;
   font-style: normal;
 }
+.skill-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+.skill-list > li{
+  display: flex;
+  padding: 2px 5px;
+  border: 1px solid #ccc;
+  margin: 5px;
+  color: white;
+  background-color: #607D8B;
+  border-radius: 5px;
+  text-align: center;
+  
+}
+
+

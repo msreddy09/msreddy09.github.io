@@ -32,8 +32,8 @@ window.mySkills = {
     ],
     "education": [
         {"course": "Master of Computer Apllications", "year": "2010", "institute": "Hindustan University", "per": "7.8", "location": "Chennai, Tamilanadu"},
-        {"course": "B.S.C computers", "year": "2007", "institute": "Sriji College", "per": "7.8", "location": "Andhrarpradesh"},
-        {"course": "Intermediate", "year": "2004", "institute": "MSR Jr College", "per": "8.4", "location": "Andhrarpradesh"},
-        {"course": "SSC", "year": "2002", "institute": "Saraswathi High school", "per": "7.8", "location": "Andhrarpradesh"}
+        {"course": "B.S.C computers", "year": "2007", "institute": "Sriji College", "per": "7.8", "location": "Andhrapradesh"},
+        {"course": "Intermediate", "year": "2004", "institute": "MSR Jr College", "per": "8.4", "location": "Andhrapradesh"},
+        {"course": "SSC", "year": "2002", "institute": "Saraswathi High school", "per": "7.8", "location": "Andhrapradesh"}
     ]
 }

@@ -23,6 +23,8 @@ window.mySkills = {
         { "name": "OOJS/ES6", "per": "80%"},
         { "name": "Responsive Web design", "per": "75%"},
         { "name": "SASS/LESS", "per": "75%"},
+        { "name": "Splunk Logger", "per": "60%"},
+
     ],
     "companies_template_obj":[
         {"c_name": "Oracle", "DOJ": "May 2018 - Till Date", "exp": "Present", "logo":"https://media-exp1.licdn.com/dms/image/C4E0BAQGmS4ZS9i2T6w/company-logo_100_100/0?e=1597276800&v=beta&t=6olabTPefycLg9ZwC-HXVwy-JfJ9swqIkr9EBp79_yA", "current_role": "Sr. Platform Software Engineer II", "past_roles": "", "location": "Hyderabad, India", "other_loacations": ""},

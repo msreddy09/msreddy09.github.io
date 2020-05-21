@@ -89,13 +89,14 @@ var ms_dev = {};
         <img width="64" style='margin-right: 15px;border-radius: 32px' src="https://media-exp1.licdn.com/dms/image/C5103AQGRGig68EGT1Q/profile-displayphoto-shrink_100_100/0?e=1594857600&amp;v=beta&amp;t=6Pgfwsw2L5PbM89MRSgDD20u4oz7x-fBzuKGCVD-PPI" loading="lazy" height="64" alt="" id="ember799" class="d-none d-sm-none d-md-block feed-identity-module__member-photo profile-rail-card__member-photo EntityPhoto-circle-5 lazy-image ember-view">
         <div class="media-body">
           <h5 class="mt-0">Sudhakar Reddy Medagam</h5>
-          <div>Phone: +91 950203078</div>
-          <div>Email: msudhakarreddy09@gmail.com</div>
-          <div><a href="httdivs://www.linkedin.com/in/msreddy09/">https://www.linkedin.com/in/msreddy09</a> </div>
-          <div><a href="httdivs://github.com/msreddy09">GitHub</a> </div>            
-          <div><a class='btn btn-primary'
+          <div><i class="fas fa-phone"></i> +91 9502030789</div>
+          <div><i class="far fa-envelope"></i> <a href="mailto:msudhakarreddy09@gmail.com">msudhakarreddy09@gmail.com</a></div>
+          <div><i class="fab fa-linkedin"></i> <a href="httdivs://www.linkedin.com/in/msreddy09/">https://www.linkedin.com/in/msreddy09</a> </div>
+          <div><i class="fab fa-github"></i> <a href="httdivs://github.com/msreddy09">https://msreddy09.github.io/</a> </div>
+          <br/>            
+          <p><a class='btn btn-primary'
             href='https://docs.google.com/gview?url=https://raw.githubusercontent.com/msreddy09/msreddy09.github.io/master/MSReddy_Resume.pdf'
-            download>Download Resume</a> </div>
+            download>Download Resume</a> </p>
         </div>
       </div>`
       $('#contact').append(contact_template);

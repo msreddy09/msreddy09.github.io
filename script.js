@@ -95,7 +95,7 @@ var ms_dev = {};
           <div><i class="fab fa-github"></i> <a href="httdivs://github.com/msreddy09">https://msreddy09.github.io/</a> </div>
           <br/>            
           <p><a class='btn btn-primary'
-            href='https://docs.google.com/gview?url=https://raw.githubusercontent.com/msreddy09/msreddy09.github.io/master/MSReddy_Resume.pdf'
+            href='https://docs.google.com/gview?url=https://raw.githubusercontent.com/msreddy09/msreddy09.github.io/master/sudhakar_Sr_Fullstack_JS_developer.docx'
             download>Download Resume</a> </p>
         </div>
       </div>`

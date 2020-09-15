@@ -91,8 +91,8 @@ var ms_dev = {};
           <h5 class="mt-0">Sudhakar Reddy Medagam</h5>
           <div><i class="fas fa-phone"></i> +91 9502030789</div>
           <div><i class="far fa-envelope"></i> <a href="mailto:msudhakarreddy09@gmail.com">msudhakarreddy09@gmail.com</a></div>
-          <div><i class="fab fa-linkedin"></i> <a href="httdivs://www.linkedin.com/in/msreddy09/">https://www.linkedin.com/in/msreddy09</a> </div>
-          <div><i class="fab fa-github"></i> <a href="httdivs://github.com/msreddy09">https://msreddy09.github.io/</a> </div>
+          <div><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/msreddy09/">https://www.linkedin.com/in/msreddy09</a> </div>
+          <div><i class="fab fa-github"></i> <a href="https://github.com/msreddy09">https://msreddy09.github.io/</a> </div>
           <br/>            
           <p><a class='btn btn-primary'
             href='https://docs.google.com/gview?url=https://raw.githubusercontent.com/msreddy09/msreddy09.github.io/master/sudhakar_Sr_Fullstack_JS_developer.docx'

@@ -24,6 +24,8 @@ window.mySkills = {
         { "name": "Responsive Web design", "per": "75%"},
         { "name": "SASS/LESS", "per": "75%"},
         { "name": "Splunk Logger", "per": "60%"},
+        { "name": "Machine Learning", "per": "30%"},
+        { "name": "GraphQL", "per": "60%"},
 
     ],
     "companies_template_obj":[

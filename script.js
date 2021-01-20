@@ -86,7 +86,7 @@ var ms_dev = {};
     context.createContat = () => {
         $('#contact').empty();
         let contact_template = `<div class="media">
-        <img width="64" style='margin-right: 15px;border-radius: 32px' src="https://media-exp1.licdn.com/dms/image/C5103AQGRGig68EGT1Q/profile-displayphoto-shrink_400_400/0?e=1605744000&v=beta&t=AHsYfLVTb95e7IIfwB6iC0JdI2uLpdX9aBHx-ztdcXI" loading="lazy" height="64" alt="" id="ember799" class="d-none d-sm-none d-md-block feed-identity-module__member-photo profile-rail-card__member-photo EntityPhoto-circle-5 lazy-image ember-view">
+        <img width="64" style='margin-right: 15px;border-radius: 32px' src="https://media-exp1.licdn.com/dms/image/C5103AQGRGig68EGT1Q/profile-displayphoto-shrink_100_100/0/1567564097988?e=1616630400&v=beta&t=7hHlzHUq-1j_BIPvnizNm-6FGxkDgk9OWXoh4Kiq3qU" loading="lazy" height="64" alt="" id="ember799" class="d-none d-sm-none d-md-block feed-identity-module__member-photo profile-rail-card__member-photo EntityPhoto-circle-5 lazy-image ember-view">
         <div class="media-body">
           <h5 class="mt-0">Sudhakar Reddy Medagam</h5>
           <div><i class="fas fa-phone"></i> +91 9502030789</div>

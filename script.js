@@ -42,7 +42,7 @@ var ms_dev = {};
                 elCont = '#begginer'
             }
             skillTemplate =  `<div class="progress">
-            <div class="progress-bar ${progresStyle}" role="progressbar" style="width: ${skill.per}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar ${progresStyle}" role="progressbar" style="width: ${skill.per}; transition: width 2s linear" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
             <div style="
             line-height: 10;
             line-height: 15px;

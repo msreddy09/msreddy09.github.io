@@ -1,230 +1,383 @@
 <html>
+
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        table, th, td 
-        {
-            border: none;
-            border-collapse: collapse;
-            padding: 2px 3px;
-            text-align: center;
-			
-        }
-		
-		table tr:nth-child(even) td {
-		  background: #eee;
-		}
-        th { 
-            font-weight:bold;
-        }
-		table {
-		  width: 100%;
-		}
-		.dashboarditem {
-		  border: 1px solid #ccc;
-		  padding: 16px 10px;
-		  display: flex;
-		  flex-direction: column;
-		  text-align: center;
-		  color: white;
-		  
-		 		  
-		}
-		.dashboarditem div:last-child {
-		   font-size: 20px;
-		   font-weight: bold;
-		   
-		}
-		#showData {
-		display: block;
-		
-		}
-		.dashboard {
-		  display: flex;
-		  justify-content: space-between;
-		  margin-bottom: 15px;
-		  
-		}
-		
-		#totalAmount {
-		  background: #28a745!important;
-		  
-		}
-		#interest {
-		background: #ffc107!important;
-		
-		}
-		
-		#principle {
-		  background: #17a2b8!important;
-		}
-		
-		th {
-		  background: #007bff!important;
-		  color: white;
-		}
-    </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    table,
+    th,
+    td {
+      border: none;
+      border-collapse: collapse;
+      padding: 2px 3px;
+      text-align: center;
+
+    }
+
+    table tr:nth-child(even) td {
+      background: #eee;
+    }
+
+    th {
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+    }
+
+    .dashboarditem {
+      border: 1px solid #ccc;
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+
+
+    }
+
+    .dashboarditem div:first-child {
+      font-size: 13px;
+
+    }
+
+    .dashboarditem div:last-child {
+      font-size: 16px;
+      font-weight: bold;
+
+    }
+
+    #showData {
+      display: block;
+
+    }
+
+    .dashboard {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+
+    }
+
+    #totalAmount {
+      background: #28a745 !important;
+
+    }
+
+    #interest {
+      background: #ffc107 !important;
+
+    }
+
+    #principle {
+      background: #17a2b8 !important;
+    }
+
+    th {
+      background: #007bff !important;
+      color: white;
+    }
+
+    .card {
+
+      background: #ccc;
+      border: 1px solid;
+      margin: 10px 0;
+    }
+
+    .card-header {
+      padding: 4px 10px;
+      display: flex;
+      justify-content: space-between;
+      background: #1562c1;
+      color: white;
+    }
+
+    .card-body {
+      padding: 10px;
+
+    }
+  </style>
 </head>
+
 <body>
-<div class='dashboard'>
-	<div class='dashboarditem' id='principle'></div>
-	<div class='dashboarditem' id='interest'></div>
-	<div class='dashboarditem' id='totalAmount'></div>
-</div>	
+  <div class='dashboard'>
+    <div class='dashboarditem' id='principle'></div>
+    <div class='dashboarditem' id='interest'></div>
+    <div class='dashboarditem' id='totalAmount'></div>
+  </div>
 
-<div>In Progress </div>
-<div id='showData'></div>
+  <div id='showData'></div>
 
 
-<script type='text/javascript'>
+  <script type='text/javascript'>
 
-var givenAmounts = [{
-    Name: 'MS1',
-    p: 100000.00, 
-    i: 2,
-    gd: '11/01/2021',
-    it: 0 ,
-	s: true,
-},
-{
-    Name: 'MS2',
-    p: 1000000.00, 
-    i: 1.5,
-    gd: '12/13/2020',
-    it: 0 ,
-	s: true,
-}
-]
+    var givenAmounts = [{
+      Name: 'Ayineedu',
+      p: 200000.00,
+      i: 1.5,
+      gd: '11/16/2022',
+      it: 0,
+      s: true,
+      time: ''
+    },
+    {
+      Name: 'Yallamanda',
+      p: 100000.00,
+      i: 1.5,
+      gd: '6/11/2022',
+      it: 0,
+      s: true,
+      time: ''
+    },
+    {
+      Name: 'Gudi Venkateswarlu',
+      p: 60000.00,
+      i: 1.5,
+      gd: '7/7/2022',
+      it: 0,
+      s: true,
+      time: ''
+    },
+    {
+      Name: 'Aadireddy Subba Reddy',
+      p: 500000.00,
+      i: 1.5,
+      gd: '8/13/2022',
+      it: 0,
+      s: true,
+      time: ''
+    },
+    {
+      Name: 'Narayana',
+      p: 50000.00,
+      i: 1.5,
+      gd: '8/3/2022',
+      it: 0,
+      s: true,
+      time: ''
+    },
+    {
+      Name: 'Rayudu',
+      p: 500000.00,
+      i: 1.5,
+      gd: '1/25/2022',
+      it: 0,
+      s: true,
+      time: ''
+    },
+    {
+      Name: 'Mukkasi',
+      p: 40000.00,
+      i: 2,
+      gd: '10/13/2021',
+      it: 0,
+      s: true,
+      time: ''
+    },
+    {
+      Name: 'Raja Gopal Reddy Maram',
+      p: 1000000.00,
+      i: 1.5,
+      gd: '11/1/2021',
+      it: 0,
+      s: true,
+      time: ''
+    },
+    {
+      Name: 'BB',
+      p: 100000.00,
+      i: 1.5,
+      gd: '3/3/2021',
+      it: 0,
+      s: true,
+      time: ''
+    },
+    {
+      Name: 'Bakka Bava',
+      p: 300000.00,
+      i: 1.5,
+      gd: '4/15/2022',
+      it: 0,
+      s: true,
+      time: ''
+    },
+    {
+      Name: 'Raja Reddy Sravani',
+      p: 95000.00,
+      i: 1.5,
+      gd: '08/06/2022',
+      it: 0,
+      s: true,
+      time: ''
+    },
+    {
+      Name: 'Nagarjuna Reddy',
+      p: 400000.00,
+      i: 1,
+      gd: '01/05/2022',
+      it: 0,
+      s: true,
+      time: ''
+    },
+    {
+      Name: 'Nayudu Palem',
+      p: 200000.00,
+      i: 1.5,
+      gd: '11/8/2022',
+      it: 0,
+      s: true,
+      time: ''
+    }
+    ]
 
-const getDateDifference = (fd, td = new Date(new Date().setDate(new Date().getDate() -1))) => {
-const date1 = new Date(fd);
-const date2 = new Date(td);
-const diffTime = Math.abs(date2 - date1);
+    const getDateDifference = (fd, td = new Date(new Date().setDate(new Date().getDate() - 1))) => {
+      const date1 = new Date(fd);
+      const date2 = new Date(td);
+      const diffTime = Math.abs(date2 - date1);
 
-const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-return {
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      return {
         inDays: 0,
         inMonths: 0,
-        inYears:0,
+        inYears: 0,
         totalDays: diffDays
+      }
+
     }
-    
-}
 
-const calCulateInterestAmount = (ga) => {
+    const calCulateInterestAmount = (ga) => {
 
-    const timePassed = getDateDifference(ga.gd);
-    const totalDays = timePassed.totalDays;
-    const interestPerDay = ((ga.p * ga.i) /100)/30;
-    console.log()
-    console.log("interestPerDay", interestPerDay)
-    const years = Math.floor(totalDays/365);
-    const months = Math.floor((totalDays - years * 365)/30);
-    const days =  Math.floor((totalDays - years * 365)%30);
-    console.log( years, months, days);
-    const yearsInt = years * (ga.i/100 * ga.p) * 12;
-    const monthsInt =  months * (ga.i/100 * ga.p )
-    const daysInt = days *  interestPerDay
-    console.log( yearsInt, monthsInt, daysInt);
-    const totalInterest = yearsInt + monthsInt + daysInt  
+      const timePassed = getDateDifference(ga.gd);
+      const totalDays = timePassed.totalDays;
+      const interestPerDay = ((ga.p * ga.i) / 100) / 30;
+      console.log("interestPerDay", interestPerDay)
+      const years = Math.floor(totalDays / 365);
+      const months = Math.floor((totalDays - years * 365) / 30);
+      const days = Math.floor((totalDays - years * 365) % 30);
+      console.log(years, months, days);
+      const yearsInt = years * (ga.i / 100 * ga.p) * 12;
+      const monthsInt = months * (ga.i / 100 * ga.p)
+      const daysInt = days * interestPerDay
+      console.log(yearsInt, monthsInt, daysInt);
+      const totalInterest = yearsInt + monthsInt + daysInt
+      ga.time = years + " Years " + months + " Months " + days + " days";
+      return Math.round(totalInterest);
 
-    return Math.round(totalInterest);
-    
-}
+    }
 
-let tableFromJson = () => {
-    // the json data.
-    
-    // Extract value from table header. 
-    // ('Book ID', 'Book Name', 'Category' and 'Price')
-    let colNames = ['Name', 'Principle', 'Interest Rate', 'Date', 'Total Amount'];
-	let col = [];
-    for (let i = 0; i < givenAmounts.length; i++) {
-      for (let key in givenAmounts[i]) {
-        if (col.indexOf(key) === -1) {
-          col.push(key);
+    let tableFromJson = () => {
+      // the json data.
+
+      // Extract value from table header. 
+      // ('Book ID', 'Book Name', 'Category' and 'Price')
+      let colNames = ['Name', 'Principle', 'Interest Rate', 'Date', 'Total Amount'];
+      let col = [];
+      for (let i = 0; i < givenAmounts.length; i++) {
+        for (let key in givenAmounts[i]) {
+          if (col.indexOf(key) === -1) {
+            col.push(key);
+          }
         }
       }
-    }
 
-    // Create table.
-    const table = document.createElement("table");
+      // Create table.
+      const table = document.createElement("div");
 
-    // Create table header row using the extracted headers above.
-    let tr = table.insertRow(-1);                   // table row.
+      // Create table header row using the extracted headers above.
+      //let tr = table.insertRow(-1);                   // table row.
 
-    for (let i = 0; i < colNames.length; i++) {
-      let th = document.createElement("th");      // table header.
-      th.innerHTML = colNames[i];
-      tr.appendChild(th);
-    }
+      /*for (let i = 0; i < colNames.length; i++) {
+        let th = document.createElement("th");      // table header.
+        th.innerHTML = colNames[i];
+        tr.appendChild(th);
+      }*/
 
-    // add json data to the table as rows.
-    for (let i = 0; i < givenAmounts.length; i++) {
 
-      tr = table.insertRow(-1);
+      var t = '';
+      // add json data to the table as rows.
+      for (let i = 0; i < givenAmounts.length; i++) {
 
-      for (let j = 0; j < col.length-1; j++) {
-        let tabCell = tr.insertCell(-1);
-        tabCell.innerHTML = givenAmounts[i][col[j]];
+        //tr = table.insertRow(-1);
+
+
+        t += `<div class='card'>
+			   <div class='card-header'> 
+				  <div>${givenAmounts[i].Name}</div> 
+				  <div> Given on: ${givenAmounts[i].gd}</div> 
+				  
+			   </div>
+			  <div class='card-body'> 
+				  <div> Duration: ${givenAmounts[i].time}</div> 				  
+				  <div style="display: flex;justify-content: space-between; margin: 6px 0">
+						<div><div>Principle </div>Rs. ${givenAmounts[i].p.toFixed(2)}</div>  
+						<div><div>Interest</div>Rs. ${givenAmounts[i].it.toFixed(2)}</div> 
+						<div><div>Interest Rate </div> ${givenAmounts[i].i.toFixed(2)}%</div> 
+				  </div>
+			  </div>
+	  
+	  </div>`
       }
+
+      //table.append(t);
+
+      // Now, add the newly created table with json data, to a container.
+      const divShowData = document.getElementById('showData');
+      divShowData.innerHTML = t;
+
     }
 
-    // Now, add the newly created table with json data, to a container.
-    const divShowData = document.getElementById('showData');
-    divShowData.innerHTML = "";
-    divShowData.appendChild(table);
-  }
+    const getAllInterests = () => {
 
-const getAllInterests = () => {
+      givenAmounts.map((ga, ind) => {
 
-    givenAmounts.map( (ga, ind) => {
-
-        let givenAmountObj = {...ga};
+        let givenAmountObj = { ...ga };
         ga.it = calCulateInterestAmount(ga)
 
         return ga;
-    })
-
-   
-    
-   tableFromJson();
-}
-
-const updateTotalAmount = () => {
-
-  const total = givenAmounts.reduce( (sum, a) => {
-     return sum + a.it + a.p;
-  }, 0)
-  
-  totalAmount.innerHTML = `<div>Total</div><div>${total.toFixed(2)}</div>`;
-
-}
-
-const updatePrincipleAmount = () => {
-
-  const total = givenAmounts.reduce( (sum, a) => {
-     return sum + a.p
-  }, 0)
-  
-  principle.innerHTML = `<div>Principle</div><div>${total.toFixed(2)}</div>`;;
-
-}
-
-const updateIntersets = () => {
-	const total = givenAmounts.reduce( (sum, a) => {
-		 return sum + (a.it)
-	  }, 0)
-	  
-	interest.innerHTML = `<div>Interest</div><div>${total.toFixed(2)}</div>`;;
-}
-
-getAllInterests();
-updateTotalAmount();
-updatePrincipleAmount();
-updateIntersets();
+      })
 
 
-</script> 
-<body>
+
+      tableFromJson();
+    }
+
+    const updateTotalAmount = () => {
+
+      const total = givenAmounts.reduce((sum, a) => {
+        return sum + a.it + a.p;
+      }, 0)
+
+      totalAmount.innerHTML = `<div>Total</div><div>Rs. ${total.toFixed(2)}</div>`;
+
+    }
+
+    const updatePrincipleAmount = () => {
+
+      const total = givenAmounts.reduce((sum, a) => {
+        return sum + a.p
+      }, 0)
+
+      principle.innerHTML = `<div>Principle</div><div>Rs. ${total.toFixed(2)}</div>`;;
+
+    }
+
+    const updateIntersets = () => {
+      const total = givenAmounts.reduce((sum, a) => {
+        return sum + (a.it)
+      }, 0)
+
+      interest.innerHTML = `<div>Interest</div><div>Rs. ${total.toFixed(2)}</div>`;;
+    }
+
+    getAllInterests();
+    updateTotalAmount();
+    updatePrincipleAmount();
+    updateIntersets();
+
+
+  </script>
+
+  <body>
+
 </html>

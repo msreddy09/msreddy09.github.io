@@ -55,7 +55,7 @@
     .dashboard {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
 
     }
 
@@ -97,6 +97,16 @@
       padding: 10px;
 
     }
+
+    #monthlyR {
+      display: flex;
+      flex-direction: row;
+      background: #7BC;
+      justify-content: space-between;
+      padding: 10px;
+      font-weight: bold;
+      color: #FFF;
+    }
   </style>
 </head>
 
@@ -106,6 +116,7 @@
     <div class='dashboarditem' id='interest'></div>
     <div class='dashboarditem' id='totalAmount'></div>
   </div>
+  <div class='' id="monthlyR"></div>
 
   <div id='showData'></div>
 
@@ -161,7 +172,7 @@
       Name: 'Rayudu',
       p: 500000.00,
       i: 1.5,
-      gd: '1/25/2022',
+      gd: '1/25/2021',
       it: 0,
       s: true,
       time: ''
@@ -267,10 +278,7 @@
     }
 
     let tableFromJson = () => {
-      // the json data.
 
-      // Extract value from table header. 
-      // ('Book ID', 'Book Name', 'Category' and 'Price')
       let colNames = ['Name', 'Principle', 'Interest Rate', 'Date', 'Total Amount'];
       let col = [];
       for (let i = 0; i < givenAmounts.length; i++) {
@@ -283,16 +291,6 @@
 
       // Create table.
       const table = document.createElement("div");
-
-      // Create table header row using the extracted headers above.
-      //let tr = table.insertRow(-1);                   // table row.
-
-      /*for (let i = 0; i < colNames.length; i++) {
-        let th = document.createElement("th");      // table header.
-        th.innerHTML = colNames[i];
-        tr.appendChild(th);
-      }*/
-
 
       var t = '';
       // add json data to the table as rows.
@@ -358,7 +356,7 @@
         return sum + a.p
       }, 0)
 
-      principle.innerHTML = `<div>Principle</div><div>Rs. ${total.toFixed(2)}</div>`;;
+      principle.innerHTML = `<div>Principle</div><div>Rs. ${total.toFixed(2)}</div>`;
 
     }
 
@@ -367,13 +365,21 @@
         return sum + (a.it)
       }, 0)
 
-      interest.innerHTML = `<div>Interest</div><div>Rs. ${total.toFixed(2)}</div>`;;
+      interest.innerHTML = `<div>Interest</div><div>Rs. ${total.toFixed(2)}</div>`;
+    }
+
+    const mothlyReceivables = () => {
+      const total = givenAmounts.reduce((sum, a) => {
+        return sum + (a.p * a.i / 100)
+      }, 0)
+      monthlyR.innerHTML = `<div>Monthly Receivables</div><div>Rs. ${total.toFixed(2)}</div>`;;
     }
 
     getAllInterests();
     updateTotalAmount();
     updatePrincipleAmount();
     updateIntersets();
+    mothlyReceivables()
 
 
   </script>

@@ -302,7 +302,7 @@
         }
         if (sortObj.sortType === 'amount') {
           givenAmounts.sort((a, b) => {
-            return sortObj.sortbyDesc ? a.p - b.p : b.p - a.p;
+            return sortObj.sortbyDesc ? (a.p + a.it) - (b.p + b.it) : (b.p + b.it) - (a.p + a.it);
           });
         }
         if (sortObj.sortType === 'name') {

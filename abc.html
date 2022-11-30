@@ -39,12 +39,12 @@
     }
 
     .dashboarditem div:first-child {
-      font-size: 13px;
+      font-size: 12px;
 
     }
 
     .dashboarditem div:last-child {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: bold;
 
     }
@@ -133,7 +133,7 @@
 
     let defaultSort = {
       sortType: 'date',
-      sortbyDesc: true
+      sortbyDesc: false
     }
 
     let givenAmounts = [{
@@ -212,7 +212,7 @@
       Name: 'BB',
       p: 100000.00,
       i: 1.5,
-      gd: '3/3/2021',
+      gd: '3/3/2020',
       it: 0,
       s: true,
       time: ''
@@ -239,7 +239,7 @@
       Name: 'Nagarjuna Reddy',
       p: 400000.00,
       i: 1,
-      gd: '01/05/2022',
+      gd: '11/05/2022',
       it: 0,
       s: true,
       time: ''
@@ -248,7 +248,7 @@
       Name: 'Nayudu Palem',
       p: 200000.00,
       i: 1.5,
-      gd: '11/8/2022',
+      gd: '11/15/2022',
       it: 0,
       s: true,
       time: ''
@@ -367,7 +367,7 @@
         return ga;
       })
 
-      tableFromJson();
+      tableFromJson(defaultSort);
     }
 
     const updateTotalAmount = () => {

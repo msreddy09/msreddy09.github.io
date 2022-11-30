@@ -97,7 +97,7 @@
 
     .card-body {
       padding: 10px;
-
+      display: none;
     }
 
     #monthlyR {
@@ -337,7 +337,7 @@
       for (let i = 0; i < givenAmounts.length; i++) {
         let ta = givenAmounts[i].p + givenAmounts[i].it;
         t += `<div class='card'>
-			   <div class='card-header'> 
+			   <div class='card-header' onclick='handleAccordian(event)'> 
 				  <div>${givenAmounts[i].Name}</div> 
 				  <div> Rs. ${ta.toFixed(2)}</div> 				  
 			   </div>
@@ -355,6 +355,16 @@
       }
       const divShowData = document.getElementById('showData');
       divShowData.innerHTML = t;
+    }
+
+    const handleAccordian = (e) => {
+      e.stopPropagation();
+      const curentEle = e.currentTarget.parentElement.children[1];
+      if (curentEle.style.display === 'none' || curentEle.style.display === '') {
+        curentEle.style.display = 'block'
+      } else {
+        curentEle.style.display = 'none'
+      }
     }
 
     const getAllInterests = () => {

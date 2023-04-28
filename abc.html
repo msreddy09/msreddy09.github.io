@@ -290,7 +290,8 @@
                 s: true,
                 time: '',
                 paid: false,
-                type: 'given'
+                type: 'given',
+                paidOn: ''
             },
             {
                 Name: 'Gudi Venkateswarlu',
@@ -302,7 +303,7 @@
                 time: '',
                 paid: true,
                 type: 'given',
-		paidOn: '27/04/2023'
+		        paidOn: '27/04/2023'
 
             },
             {
@@ -314,7 +315,8 @@
                 s: true,
                 time: '',
                 paid: false,
-                type: 'given'
+                type: 'given',
+                paidOn: ''
             },
             {
                 Name: 'Narayana',
@@ -325,7 +327,8 @@
                 s: true,
                 time: '',
                 paid: false,
-                type: 'given'
+                type: 'given',
+                paidOn: ''
             },
             {
                 Name: 'Rayudu',
@@ -336,7 +339,8 @@
                 s: true,
                 time: '',
                 paid: false,
-                type: 'given'
+                type: 'given',
+                paidOn: ''
             },
             {
                 Name: 'Bakka Bava',
@@ -347,7 +351,8 @@
                 s: true,
                 time: '',
                 paid: false,
-                type: 'given'
+                type: 'given',
+                paidOn: ''
             },
             {
                 Name: 'Srimannarayana',
@@ -358,7 +363,8 @@
                 s: true,
                 time: '',
                 paid: false,
-                type: 'received'
+                type: 'received',
+                paidOn: ''
             },
             {
                 Name: 'Pinakini Gold Loan',
@@ -369,7 +375,8 @@
                 s: true,
                 time: '',
                 paid: false,
-                type: 'received'
+                type: 'received',
+                paidOn: ''
             },
             {
                 Name: 'Pinakini Gold Loan',
@@ -380,7 +387,8 @@
                 s: true,
                 time: '',
                 paid: false,
-                type: 'received'
+                type: 'received',
+                paidOn: ''
             }
 
         ]
@@ -482,7 +490,7 @@
 				  <div> Rs. ${ta.toFixed(2)}</div> 				  
 			   </div>
 			  <div class='card-body'> 
-          <div> Given on: ${amountsArray[i].gd}</div> 
+                  <div> Given on: ${amountsArray[i].gd}</div> <div> Paid on: ${amountsArray[i].paidOn}</div> 
 				  <div> Duration: ${amountsArray[i].time}</div> 				  
 				  <div style="display: flex;justify-content: space-between; margin: 6px 0">
 						<div><div>Principle </div>Rs. ${amountsArray[i].p.toFixed(2)}</div>  

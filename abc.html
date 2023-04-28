@@ -133,8 +133,8 @@
 
         .loan-card {
             padding: 12px;
-            box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.5);
-            margin: 15px 10px;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+            margin: 15px 5px;
             border-radius: 3px;
         }
 
@@ -280,6 +280,9 @@
         }
         let totalGivenAmount = 0;
         let totalReceivedAmount = 0
+
+        //dateFormat : mm/dd/yy
+
         let givenAmounts = [
             {
                 Name: 'Ayineedu',
@@ -303,7 +306,7 @@
                 time: '',
                 paid: true,
                 type: 'given',
-		        paidOn: '27/04/2023'
+                paidOn: '4/27/2023'
 
             },
             {
@@ -343,7 +346,7 @@
                 paidOn: ''
             },
             {
-                Name: 'Bakka Bava',
+                Name: 'Inaganti Subba Reddy',
                 p: 300000.00,
                 i: 1.5,
                 gd: '4/15/2022',
@@ -353,6 +356,18 @@
                 paid: false,
                 type: 'given',
                 paidOn: ''
+            },
+            {
+                Name: 'Alugundla Venka Reddy',
+                p: 200000.00,
+                i: 1.5,
+                gd: '12/24/2022',
+                it: 0,
+                s: true,
+                time: '',
+                paid: true,
+                type: 'given',
+                paidOn: '04/08/2023'
             },
             {
                 Name: 'Srimannarayana',
@@ -410,7 +425,7 @@
 
         const calCulateInterestAmount = (ga) => {
 
-            const timePassed = getDateDifference(ga.gd);
+            const timePassed = ga.paidOn ? getDateDifference(ga.gd, ga.paidOn) : getDateDifference(ga.gd);
             const totalDays = timePassed.totalDays;
             const interestPerDay = ((ga.p * ga.i) / 100) / 30;
             const years = Math.floor(totalDays / 365);
@@ -420,12 +435,13 @@
             const monthsInt = months * (ga.i / 100 * ga.p)
             const daysInt = days * interestPerDay
             const totalInterest = yearsInt + monthsInt + daysInt
+
             ga.time = years + " Years " + months + " Months " + days + " days";
             return Math.round(totalInterest);
 
         }
 
-        let tableFromJson = (sortObj, idEl, type) => {
+        const tableFromJson = (sortObj, idEl, type) => {
             let amountsArray = givenAmounts.filter(amts => {
                 if (type === 'G') {
                     return amts.type === 'given'
@@ -490,8 +506,12 @@
 				  <div> Rs. ${ta.toFixed(2)}</div> 				  
 			   </div>
 			  <div class='card-body'> 
-                  <div> Given on: ${amountsArray[i].gd}</div> <div> Paid on: ${amountsArray[i].paidOn}</div> 
-				  <div> Duration: ${amountsArray[i].time}</div> 				  
+                <div style="display: flex;justify-content: space-between; margin: 6px 0">
+                    <div> Given on: ${amountsArray[i].gd}</div> 
+                    <div> Paid on:  ${amountsArray[i].paidOn}</div> 
+                </div>
+                 <div> Duration: ${amountsArray[i].time}</div> 
+                  				  
 				  <div style="display: flex;justify-content: space-between; margin: 6px 0">
 						<div><div>Principle </div>Rs. ${amountsArray[i].p.toFixed(2)}</div>  
 						<div><div>Interest</div>Rs. ${amountsArray[i].it.toFixed(2)}</div> 
@@ -641,7 +661,6 @@
 
         const updateNetTotal = () => {
             const bal = parseInt(totalGivenAmount) - parseInt(totalReceivedAmount);
-            console.log(bal)
             document.getElementById('bal').innerHTML = bal.toFixed(2);
         }
 

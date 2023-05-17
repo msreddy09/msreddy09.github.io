@@ -270,162 +270,35 @@
         <input type="password" maxlength="4" placeholder="CODE" title="pass code" onkeyup="login(event)" />
     </div>
 
-
     <script type='text/javascript'>
-
 
         let defaultSort = {
             sortType: 'date',
             sortbyDesc: false
         }
         let totalGivenAmount = 0;
-        let totalReceivedAmount = 0
-
-        //dateFormat : mm/dd/yy
-
-        let givenAmounts = [
-            {
-                Name: 'Ayineedu',
-                p: 200000.00,
-                i: 1.5,
-                gd: '11/16/2022',
-                it: 0,
-                s: true,
-                time: '',
-                paid: false,
-                type: 'given',
-                paidOn: ''
-            },
-            {
-                Name: 'Gudi Venkateswarlu',
-                p: 60000.00,
-                i: 1.5,
-                gd: '7/7/2022',
-                it: 0,
-                s: true,
-                time: '',
-                paid: true,
-                type: 'given',
-                paidOn: '4/27/2023'
-
-            },
-            {
-                Name: 'Aadireddy Subba Reddy',
-                p: 500000.00,
-                i: 1.5,
-                gd: '8/13/2022',
-                it: 0,
-                s: true,
-                time: '',
-                paid: false,
-                type: 'given',
-                paidOn: ''
-            },
-            {
-                Name: 'Narayana',
-                p: 50000.00,
-                i: 1.5,
-                gd: '8/3/2022',
-                it: 0,
-                s: true,
-                time: '',
-                paid: false,
-                type: 'given',
-                paidOn: ''
-            },
-            {
-                Name: 'Rayudu',
-                p: 500000.00,
-                i: 1.5,
-                gd: '1/25/2021',
-                it: 0,
-                s: true,
-                time: '',
-                paid: false,
-                type: 'given',
-                paidOn: ''
-            },
-            {
-                Name: 'Inaganti Subba Reddy',
-                p: 300000.00,
-                i: 1.5,
-                gd: '4/15/2022',
-                it: 0,
-                s: true,
-                time: '',
-                paid: false,
-                type: 'given',
-                paidOn: ''
-            },
-            {
-                Name: 'Alugundla Venka Reddy',
-                p: 200000.00,
-                i: 1.5,
-                gd: '12/24/2022',
-                it: 0,
-                s: true,
-                time: '',
-                paid: true,
-                type: 'given',
-                paidOn: '04/08/2023'
-            },
-            {
-                Name: 'Srimannarayana',
-                p: 300000.00,
-                i: 1.5,
-                gd: '04/24/2023',
-                it: 0,
-                s: true,
-                time: '',
-                paid: false,
-                type: 'received',
-                paidOn: ''
-            },
-            {
-                Name: 'Pinakini Gold Loan',
-                p: 452000.00,
-                i: 0.60,
-                gd: '04/17/2023',
-                it: 0,
-                s: true,
-                time: '',
-                paid: false,
-                type: 'received',
-                paidOn: ''
-            },
-            {
-                Name: 'Pinakini Gold Loan',
-                p: 112000.00,
-                i: 0.70,
-                gd: '04/20/2023',
-                it: 0,
-                s: true,
-                time: '',
-                paid: false,
-                type: 'received',
-                paidOn: ''
-            },
-		{
-                Name: 'Ashok Reddy Medagam',
-                p:250000.00,
-                i: 1.50,
-                gd: '05/10/2023',
-                it: 0,
-                s: true,
-                time: '',
-                paid: false,
-                type: 'received',
-                paidOn: ''
+        let totalReceivedAmount = 0;
+        let givenAmounts = [];
+        const getAmounts = async () => {
+            const response = await fetch("loanamounts.json");
+            const responsJson = await response.json();
+            givenAmounts = responsJson.givenAmounts;
+            if (sessionStorage.getItem('isLogin')) {
+                init();
+                document.getElementsByClassName('loanview')[0].style.display = 'block'
+            } else {
+                document.getElementsByClassName('loginview')[0].style.display = 'block'
             }
-
-        ]
+        }
+        
+        getAmounts();
 
         const getDateDifference = (fd, td = new Date(new Date().setDate(new Date().getDate() - 1))) => {
             const date1 = new Date(fd);
             const date2 = new Date(td);
-            const diffTime = Math.abs(date2 - date1);
+            const diffTime = date2 - date1 < 0 ? 0: date2 - date1;
 
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            const diffDays = diffTime > 0 ? Math.ceil(diffTime / (1000 * 60 * 60 * 24)): 0;
             return {
                 inDays: 0,
                 inMonths: 0,
@@ -708,13 +581,6 @@
                 givencard.style.display = 'block';
                 receivedcard.style.display = 'none'
             }
-        }
-
-        if (sessionStorage.getItem('isLogin')) {
-            init();
-            document.getElementsByClassName('loanview')[0].style.display = 'block'
-        } else {
-            document.getElementsByClassName('loginview')[0].style.display = 'block'
         }
 
         const login = (event) => {

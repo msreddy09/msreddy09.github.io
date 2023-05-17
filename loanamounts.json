@@ -1,0 +1,163 @@
+{
+    "givenAmounts": [
+        {
+            "Name": "Ayineedu",
+            "p": 200000.00,
+            "i": 1.5,
+            "gd": "11/16/2022",
+            "it": 0,
+            "s": true,
+            "time": "",
+            "paid": false,
+            "type": "given",
+            "paidOn": ""
+        },
+        {
+            "Name": "Gudi Venkateswarlu",
+            "p": 60000.00,
+            "i": 1.5,
+            "gd": "7/7/2022",
+            "it": 0,
+            "s": true,
+            "time": "",
+            "paid": true,
+            "type": "given",
+            "paidOn": ""
+
+        },
+        {
+            "Name": "Aadireddy Subba Reddy",
+            "p": 500000.00,
+            "i": 1.5,
+            "gd": "8/13/2022",
+            "it": 0,
+            "s": true,
+            "time": "",
+            "paid": false,
+            "type": "given",
+            "paidOn": ""
+        },
+        {
+            "Name": "Narayana",
+            "p": 50000.00,
+            "i": 1.5,
+            "gd": "8/3/2022",
+            "it": 0,
+            "s": true,
+            "time": "",
+            "paid": false,
+            "type": "given",
+            "paidOn": ""
+        },
+        {
+            "Name": "Rayudu",
+            "p": 500000.00,
+            "i": 1.5,
+            "gd": "1/25/2021",
+            "it": 0,
+            "s": true,
+            "time": "",
+            "paid": false,
+            "type": "given",
+            "paidOn": ""
+        },
+        {
+            "Name": "Inaganti Subba Reddy",
+            "p": 300000.00,
+            "i": 1.5,
+            "gd": "4/15/2022",
+            "it": 0,
+            "s": true,
+            "time": "",
+            "paid": false,
+            "type": "given",
+            "paidOn": ""
+        },
+        {
+            "Name": "Alugundla Venka Reddy",
+            "p": 200000.00,
+            "i": 1.5,
+            "gd": "12/24/2022",
+            "it": 0,
+            "s": true,
+            "time": "",
+            "paid": true,
+            "type": "given",
+            "paidOn": "04/08/2023"
+        },
+        {
+            "Name": "Srimannarayana",
+            "p": 150000.00,
+            "i": 1.5,
+            "gd": "04/24/2023",
+            "it": 0,
+            "s": true,
+            "time": "",
+            "paid": false,
+            "type": "received",
+            "paidOn": ""
+        },
+        {
+            "Name": "Srimannarayana",
+            "p": 150000.00,
+            "i": 1.5,
+            "gd": "04/24/2023",
+            "it": 0,
+            "s": true,
+            "time": "",
+            "paid": false,
+            "type": "received",
+            "paidOn": ""
+        },
+        {
+            "Name": "Pinakini Gold Loan",
+            "p": 452000.00,
+            "i": 0.60,
+            "gd": "04/17/2023",
+            "it": 0,
+            "s": true,
+            "time": "",
+            "paid": false,
+            "type": "received",
+            "paidOn": ""
+        },
+        {
+            "Name": "Pinakini Gold Loan",
+            "p": 112000.00,
+            "i": 0.70,
+            "gd": "04/20/2023",
+            "it": 0,
+            "s": true,
+            "time": "",
+            "paid": false,
+            "type": "received",
+            "paidOn": ""
+        },
+        {
+            "Name": "Ashok Reddy Medagam",
+            "p": 150000.00,
+            "i": 1.5,
+            "gd": "05/10/2023",
+            "it": 0,
+            "s": true,
+            "time": "",
+            "paid": false,
+            "type": "received",
+            "paidOn": ""
+        },
+        {
+            "Name": "Ashok Reddy Medagam",
+            "p": 100000.00,
+            "i": 1.5,
+            "gd": "05/10/2023",
+            "it": 0,
+            "s": true,
+            "time": "",
+            "paid": false,
+            "type": "received",
+            "paidOn": ""
+        }
+
+    ]
+
+}

@@ -153,9 +153,9 @@
             "it": 0,
             "s": true,
             "time": "",
-            "paid": false,
+            "paid": true,
             "type": "received",
-            "paidOn": ""
+            "paidOn": "06/04/2023"
         }, {
             "Name": "Home",
             "p": 200000.00,

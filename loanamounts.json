@@ -105,9 +105,9 @@
             "it": 0,
             "s": true,
             "time": "",
-            "paid": false,
+            "paid": true,
             "type": "received",
-            "paidOn": ""
+            "paidOn": "07/01/2023"
         },
         {
             "Name": "Pinakini Gold Loan",

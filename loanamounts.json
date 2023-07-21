@@ -93,9 +93,9 @@
             "it": 0,
             "s": true,
             "time": "",
-            "paid": false,
+            "paid": true,
             "type": "received",
-            "paidOn": ""
+            "paidOn": "07/21/2023"
         },
         {
             "Name": "Srimannarayana",

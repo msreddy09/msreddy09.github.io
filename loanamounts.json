@@ -141,7 +141,7 @@
             "it": 0,
             "s": true,
             "time": "",
-            "paid": false,
+            "paid": true,
             "type": "received",
             "paidOn": "08/01/2023"
         },

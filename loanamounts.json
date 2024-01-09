@@ -164,9 +164,9 @@
             "it": 0,
             "s": true,
             "time": "",
-            "paid": false,
+            "paid": true,
             "type": "received",
-            "paidOn": ""
+            "paidOn": "10/10/2023"
         },
         {
             "Name": "APGB Crop Loan",

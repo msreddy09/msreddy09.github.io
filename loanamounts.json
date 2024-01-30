@@ -179,6 +179,42 @@
             "paid": false,
             "type": "received",
             "paidOn": ""
+        },
+         {
+            "Name": "Rajagopal Maram",
+            "p": 100000.00,
+            "i": 1.5,
+            "gd": "12/18/2023",
+            "it": 0,
+            "s": true,
+            "time": "",
+            "paid": false,
+            "type": "given",
+            "paidOn": ""
+        },
+        {
+            "Name": "Supraja",
+            "p": 200000.00,
+            "i": 1.5,
+            "gd": "01/30/2024",
+            "it": 0,
+            "s": true,
+            "time": "",
+            "paid": false,
+            "type": "given",
+            "paidOn": ""
+        },
+        {
+            "Name": "Naidu Palem",
+            "p": 100000.00,
+            "i": 1.5,
+            "gd": "01/29/2024",
+            "it": 0,
+            "s": true,
+            "time": "",
+            "paid": false,
+            "type": "given",
+            "paidOn": ""
         }
 
     ]

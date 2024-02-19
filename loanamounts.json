@@ -69,9 +69,9 @@
             "it": 0,
             "s": true,
             "time": "",
-            "paid": false,
+            "paid": true,
             "type": "given",
-            "paidOn": ""
+            "paidOn": "2/15/2024"
         },
         {
             "Name": "Inaganti Subba Reddy",
@@ -217,6 +217,18 @@
             "paidOn": ""
         },
         {
+            "Name": "Rajani KTP",
+            "p": 150000.00,
+            "i": 1.5,
+            "gd": "17/02/2024",
+            "it": 0,
+            "s": true,
+            "time": "",
+            "paid": false,
+            "type": "given",
+            "paidOn": ""
+        },
+        {
             "Name": "Supraja",
             "p": 200000.00,
             "i": 1.5,
@@ -245,6 +257,18 @@
             "p": 300000.00,
             "i": 1.5,
             "gd": "02/05/2024",
+            "it": 0,
+            "s": true,
+            "time": "",
+            "paid": false,
+            "type": "given",
+            "paidOn": ""
+        },
+         {
+            "Name": "Srikanth Devireddy",
+            "p": 100000.00,
+            "i": 1.5,
+            "gd": "02/19/2024",
             "it": 0,
             "s": true,
             "time": "",

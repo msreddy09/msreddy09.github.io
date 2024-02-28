@@ -236,9 +236,9 @@
             "it": 0,
             "s": true,
             "time": "",
-            "paid": false,
+            "paid": true,
             "type": "given",
-            "paidOn": ""
+            "paidOn": "02/20/2024"
         },
         {
             "Name": "Naidu Palem",

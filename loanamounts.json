@@ -45,9 +45,9 @@
             "it": 0,
             "s": true,
             "time": "",
-            "paid": false,
+            "paid": true,
             "type": "given",
-            "paidOn": ""
+            "paidOn": "3/26/2024"
         },
         {
             "Name": "Rayudu",
@@ -212,9 +212,9 @@
             "it": 0,
             "s": true,
             "time": "",
-            "paid": false,
+            "paid": true,
             "type": "given",
-            "paidOn": ""
+            "paidOn": "03/10/2024"
         },
         {
             "Name": "Rajani KTP",
@@ -224,9 +224,9 @@
             "it": 0,
             "s": true,
             "time": "",
-            "paid": false,
+            "paid": true,
             "type": "given",
-            "paidOn": ""
+            "paidOn": "04/06/2024"
         },
         {
             "Name": "Supraja",

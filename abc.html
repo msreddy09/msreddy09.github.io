@@ -267,7 +267,7 @@
             <div id='rshowData'></div>
         </div>
         <div class='loan-card cardcontent' id='assetscard'>
-            <div id='rshowData'></div>
+            <div id='ashowData'></div>
         </div>
     </div>
     <div class="loginview">
@@ -553,6 +553,10 @@
             document.getElementById('bal').innerHTML = bal.toFixed(2);
         }
 
+	const showAssetsTable = () => {
+		
+	}
+
         const init = () => {
             getAllInterests('G');
             updateTotalAmount('G');
@@ -565,6 +569,9 @@
             updateIntersets('R')
             updateTotalAmount('R');
             mothlyReceiveOrPayables('R');
+
+	    showAssetsTable()
+		
             updateNetTotal();
         }
 

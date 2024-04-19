@@ -230,9 +230,10 @@
         <div class='loan-card tabs'>
             <div class='active tab-btn' onClick="showTabTab(event)">Given</div>
             <div class='tab-btn' onClick="showTabTab(event)">Received</div>
+            <div class='tab-btn' onClick="showTabTab(event)">Assets</div>
         </div>
         <div class='loan-card'> Net Amount: <span id='bal'></span></div>
-        <div class='loan-card' id='givencard'>
+        <div class='loan-card cardcontent' id='givencard'>
             <div class='dashboard'>
                 <div class='dashboarditem' id='principle'></div>
                 <div class='dashboarditem' id='interest'></div>
@@ -249,7 +250,7 @@
             <div id='gshowData'></div>
         </div>
 
-        <div class='loan-card' id='receivedcard'>
+        <div class='loan-card cardcontent' id='receivedcard'>
 
             <div class='dashboard'>
                 <div class='dashboarditem' id='rprinciple'></div>
@@ -263,6 +264,9 @@
                 <button onclick="sortData('amount')">Amount</button>
                 <button onclick="sortData('name')">Name</button>
             </div>
+            <div id='rshowData'></div>
+        </div>
+        <div class='loan-card cardcontent' id='assetscard'>
             <div id='rshowData'></div>
         </div>
     </div>
@@ -567,19 +571,25 @@
         const showTabTab = (event) => {
             const givencard = document.getElementById('givencard')
             const receivedcard = document.getElementById('receivedcard');
+            const assetscard = document.getElementById('assetscard');
             const allTabs = document.getElementsByClassName('tab-btn');
+            const allTabsContent = document.getElementsByClassName('cardcontent');
             for (let i = 0; i < allTabs.length; i++) {
                 allTabs[i].classList.remove('active');
+		allTabsContent[i].style.display = 'none'
             }
             if (event.target.innerHTML === 'Received') {
-                givencard.style.display = 'none';
                 receivedcard.style.display = 'block'
                 event.target.classList.add('active');
 
-            } else {
+            } 
+	    if(event.target.innerHTML === 'Given'){
                 event.target.classList.add('active');
                 givencard.style.display = 'block';
-                receivedcard.style.display = 'none'
+            }
+            if(event.target.innerHTML === 'Assets'){
+                event.target.classList.add('active');
+                assetscard.style.display = 'block'
             }
         }
 

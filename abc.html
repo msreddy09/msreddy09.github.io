@@ -434,7 +434,7 @@
             })
             if (type === 'G') {
                 tableFromJson(defaultSort, 'gshowData', type);
-            } else {
+            } else if (type === 'R') {
                 tableFromJson(defaultSort, 'rshowData', type);
             }
 
@@ -457,7 +457,7 @@
             if (type === 'G') {
                 totalGivenAmount = total.toFixed(2);
                 totalAmount.innerHTML = `<div>Total</div><div>Rs. ${total.toFixed(2)}</div>`;
-            } else {
+            } else  if (type === 'R'){
                 totalReceivedAmount = total.toFixed(2);
                 rtotalAmount.innerHTML = `<div>Total</div><div>Rs. ${total.toFixed(2)}</div>`;
             }

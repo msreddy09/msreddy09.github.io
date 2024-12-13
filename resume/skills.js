@@ -26,6 +26,8 @@ window.mySkills = {
         { "name": "Splunk Logger", "per": "60%"},
         { "name": "Machine Learning", "per": "30%"},
         { "name": "GraphQL", "per": "60%"},
+        { "name": "Retool", "per": "60%"},
+        { "name": "NextJS", "per": "60%"},
 
     ],
     "companies_template_obj":[

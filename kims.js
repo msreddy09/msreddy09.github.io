@@ -96,6 +96,27 @@ document.addEventListener("DOMContentLoaded", () => {
       Balance: v.in - v.out,
     }));
 
+    const totals = partySummary.reduce((acc, curr) => {
+        acc.totalIn += curr["Cash In"] || 0;
+        acc.totalOut += curr["Cash Out"] || 0;
+        acc.balance += curr.Balance || 0;
+        return acc;
+      },
+      { totalIn: 0, totalOut: 0, balance: 0 }
+    );
+    cashin.innerHTML = `<b>${totals.totalIn.toLocaleString('en-IN', {
+      style: 'currency',
+      currency: 'INR',
+    })}</b>`;
+    cashout.innerHTML = `<b>${totals.totalOut.toLocaleString('en-IN', {
+      style: 'currency',
+      currency: 'INR',
+    })}</b>`;
+    balance.innerHTML = `<b>${totals.balance.toLocaleString('en-IN', {
+      style: 'currency',
+      currency: 'INR',
+    })}`;
+
     // 2ndShed Filter
     const shedData = data.filter((r) =>
       (r["Remarks"] || "").toLowerCase().includes("2ndshed:")

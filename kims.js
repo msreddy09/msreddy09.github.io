@@ -2,11 +2,49 @@
 // <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 // <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
+
+const abc = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQe3k3p3r9u5jHBhE9cE0yLXqk_WLC_EofcSAETSmkmC_oIA6h8tDjfugc-q_L9XZodfNo3RHjsrW0G/pub?output=csv"
 document.addEventListener("DOMContentLoaded", () => {
-  const fileInput = document.getElementById("fileInput");
+  // const fileInput = document.getElementById("fileInput");
   const resultDiv = document.getElementById("result");
 
-  fileInput.addEventListener("change", handleFileUpload);
+  // fileInput.addEventListener("change", handleFileUpload);
+  async function fetchGoogleDocData() {
+    // const url = 'https://docs.google.com/document/d/e/YOUR_DOC_ID/pub';
+    const response = await fetch(abc);
+    const html = await response.text();
+    // If your data is in simple lines, you can extract it easily
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const content = doc.body.innerText;
+    console.log(content); // or parse it as needed
+   // processData(content)
+   const rows = content.trim().split('\n');
+  const headers = rows[0].split(',');
+
+  const json = rows.slice(1).map(row => {
+    const values = row.split(',');
+    return headers.reduce((obj, header, i) => {
+      obj[header.trim()] = values[i]?.trim();
+      return obj;
+    }, {});
+  });
+    console.log(json)
+    processData(json);
+    //return content;
+  }
+  //fetchGoogleDocData();
+
+  Papa.parse(abc, {
+  download: true,
+  header: true,
+  skipEmptyLines: true,
+  complete: (results) => {
+    console.log(results.data); // clean JSON
+    processData(results.data);
+  }
+});
+  
 
   function handleFileUpload(event) {
     const file = event.target.files[0];
@@ -60,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 2ndShed Filter
     const shedData = data.filter((r) =>
-      (r["Remark"] || "").toLowerCase().includes("2ndshed:")
+      (r["Remarks"] || "").toLowerCase().includes("2ndshed:")
     );
 
     // Display results
@@ -76,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (rows.length === 0) return "<p>No data available.</p>";
 
     const headers = Object.keys(rows[0]);
-    let html = "<table border='1' cellspacing='0' cellpadding='6'><tr>";
+    let html = "<table class='table table-striped' border='1' cellspacing='0' cellpadding='6'><tr>";
     headers.forEach((h) => (html += `<th>${h}</th>`));
     html += "</tr>";
 
@@ -89,4 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
     html += "</table>";
     return html;
   }
+
+ 
 });

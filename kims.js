@@ -126,10 +126,11 @@ document.addEventListener("DOMContentLoaded", () => {
     resultDiv.innerHTML = `
       <h2>Party Summary</h2>
       ${createTable(partySummary)}
-      <h2>2ndShed Transactions</h2>
-      ${createTable(shedData)}
+      
     `;
   }
+  //<h2>2ndShed Transactions</h2>
+     // ${createTable(shedData)}
 
   function createTable(rows) {
     if (rows.length === 0) return "<p>No data available.</p>";

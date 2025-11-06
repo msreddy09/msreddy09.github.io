@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const dateB = new Date(b.Date);
       return dateB - dateA; // descending order
     });
-    // Step 2: Take latest 20
+    // Step 2: Take latest 10
     const latest20 = sorted.slice(0, 20);
 
     // 2ndShed Filter
@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
     resultDiv.innerHTML = `
       ${createTable(formatSummary)}
     `;
-    trans.innerHTML = `<b>Latest 20 Transaction</b>
+    trans.innerHTML = `<div class="mt-2 mb-2 text-center" style="font-size: 0.75rem">Latest 20 Transaction</div>
       ${createCards(latest20)}`
   }
 
@@ -157,18 +157,26 @@ document.addEventListener("DOMContentLoaded", () => {
   function createTable(rows) {
     if (rows.length === 0) return "<p>No data available.</p>";
 
-    const headers = Object.keys(rows[0]);
-    let html = "<table class='table table-striped' style='border-radius: 5px' border='1' cellspacing='0' cellpadding='6'>";
-    //headers.forEach((h) => (html += `<th>${h}</th>`));
-    //html += "</tr>";
-
+    let html = '';
     rows.forEach((r) => {
-      html += "<tr>";
-      headers.forEach((h) => (html += `<td>${r[h] ?? ""}</td>`));
-      html += "</tr>";
+      html += `<div style="background: linear-gradient(90deg, #eff6ff 0%, #dbeafe 100%);
+" class="card shadow-sm p-2 d-flex justify-content-between flex-row align-items-center">
+      <span>${r['Party']}</span>
+      <strong>${r['Cash In']}</strong>
+    </div>`;
     });
+    // const headers = Object.keys(rows[0]);
+    // let html = "<table class='table table-striped' border='1' cellspacing='0' cellpadding='6'><tr>";
+    // headers.forEach((h) => (html += `<th>${h}</th>`));
+    // html += "</tr>";
 
-    html += "</table>";
+    // rows.forEach((r) => {
+    //   html += "<tr>";
+    //   headers.forEach((h) => (html += `<td>${r[h] ?? ""}</td>`));
+    //   html += "</tr>";
+    // });
+
+    // html += "</table>";
     return html;
   }
 
@@ -198,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <span class="status">${r.Mode}</span>
             <span class="party-label">${r.Date}</span>
           </div>
-          <div class='border-top pt-1 mt-1' style='font-size: 0.7rem'>Entry By: ${r["Enter By"]} at ${r["Timestamp"] == "" ?  r['Time'] : r["Timestamp"].slice(-8)}</div>
+          <div class='border-top pt-1 mt-1' style='font-size: 0.7rem'>Entry By: ${r["Enter By"]} at ${r["Timestamp"] == "" ? r['Time'] : r["Timestamp"].slice(-8)}</div>
         </div>`
 
       } else {
@@ -224,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <span class="status">${r.Mode}</span>
             <span class="party-label">${r.Date}</span>
           </div>
-          <div class='border-top pt-1 mt-1' style='font-size: 0.7rem'>Entry By: ${r["Enter By"]} at ${r["Timestamp"] == "" ?  r['Time'] : r["Timestamp"].slice(-8)}</div>
+          <div class='border-top pt-1 mt-1' style='font-size: 0.7rem'>Entry By: ${r["Enter By"]} at ${r["Timestamp"] == "" ? r['Time'] : r["Timestamp"].slice(-8)}</div>
 
       </div>`
       }
@@ -232,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return html;
   }
 
-  
+
 
 
 });

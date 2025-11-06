@@ -158,9 +158,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (rows.length === 0) return "<p>No data available.</p>";
 
     const headers = Object.keys(rows[0]);
-    let html = "<table class='table table-striped' border='1' cellspacing='0' cellpadding='6'><tr>";
-    headers.forEach((h) => (html += `<th>${h}</th>`));
-    html += "</tr>";
+    let html = "<table class='table table-striped' style='border-radius: 5px' border='1' cellspacing='0' cellpadding='6'>";
+    //headers.forEach((h) => (html += `<th>${h}</th>`));
+    //html += "</tr>";
 
     rows.forEach((r) => {
       html += "<tr>";

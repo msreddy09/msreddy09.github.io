@@ -147,13 +147,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }));
     // Display results
     resultDiv.innerHTML = `
-      <h3>Party Summary</h3>
       ${createTable(formatSummary)}
-
-      
-      
     `;
-    trans.innerHTML = `<h3>Latest 10 Transaction</h3>
+    trans.innerHTML = `<h6>Latest 10 Transaction</h6>
       ${createCards(latest10)}`
   }
 
@@ -180,10 +176,10 @@ document.addEventListener("DOMContentLoaded", () => {
     let html = '';
     rows.forEach((r) => {
       if (r["Cash In"]) {
-        html += `<div class="payment-card mb-1">
+        html += `<div class="payment-card in mb-2">
           <div class="d-flex justify-content-between align-items-start">
             <div>
-              <h6 class="mb-1">${r.Remarks}</h6>
+              <h6 class="mb-1">${r.Party}</h6>
             </div>
             <div class="amount_green">${r["Cash In"].toLocaleString('en-IN', {
           style: 'currency',
@@ -192,23 +188,24 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
 
           <div class="mt-2 mb-2">
-            <div class="due-label">Date:
-              <span class="fw-semibold text-dark">${r.Date}</span>
+            <div class="due-label">
+              <span class="fw-semibold text-dark">${r.Remarks}</span>
             </div>
           </div>
 
           <div class="d-flex align-items-center gap-2">
             <span class="tag">${r.Category}</span>
             <span class="status">${r.Mode}</span>
-            <span class="party-label">${r.Party}</span>
+            <span class="party-label">${r.Date}</span>
           </div>
+          <div class='border-top pt-1 mt-1' style='font-size: 0.7rem'>Entry By: ${r["Enter By"]} at ${r["Timestamp"] == "" ?  r['Time'] : r["Timestamp"].slice(-8)}</div>
         </div>`
 
       } else {
-        html += `<div class="payment-card mb-1">
+        html += `<div class="payment-card out mb-2">
         <div class="d-flex justify-content-between align-items-start">
           <div>
-             <h6 class="mb-1">${r.Remarks}</h6>
+             <h6 class="mb-1">${r.Party}</h6>
           </div>
           <div class="amount_red">${r["Cash Out"].toLocaleString('en-IN', {
           style: 'currency',
@@ -217,21 +214,25 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
        <div class="mt-2 mb-2">
-            <div class="due-label">Date:
-              <span class="fw-semibold text-dark">${r.Date}</span>
+            <div class="due-label">
+              <span class="fw-semibold text-dark">${r.Remarks}</span>
             </div>
           </div>
 
           <div class="d-flex align-items-center gap-2">
             <span class="tag">${r.Category}</span>
             <span class="status">${r.Mode}</span>
-            <span class="party-label">${r.Party}</span>
+            <span class="party-label">${r.Date}</span>
           </div>
+          <div class='border-top pt-1 mt-1' style='font-size: 0.7rem'>Entry By: ${r["Enter By"]} at ${r["Timestamp"] == "" ?  r['Time'] : r["Timestamp"].slice(-8)}</div>
+
       </div>`
       }
     })
     return html;
   }
+
+  
 
 
 });

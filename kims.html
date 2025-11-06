@@ -5,66 +5,206 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
  <style>
+  /*#ecf5e6*/
+
     .payment-card {
       border: 1px solid #e5e5e5;
       border-radius: 10px;
       padding: 16px;
       background: #fff;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      box-shadow: 0 3px 5px rgba(0,0,0,0.05);
       max-width: 100%;
+    }
+    .payment-card.in{
+      background-color: #ecf5e6;
+    }
+    .payment-card.out {
+      background-color: #fbecec;
     }
     .amount_red {
       color: #d9534f; /* red */
       font-weight: 700;
-      font-size: 1.25rem;
+      font-size: 1rem;
     }
     .amount_green {
       color: #02d870; /* green */
       font-weight: 700;
-      font-size: 1.25rem;
+      font-size: 1rem;
     }
     .due-label {
       color: #6c757d;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
     .party-label {
       color: #4f76b1;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
     .tag {
       background-color: #e9f2ff;
       color: #0d6efd;
       padding: 3px 8px;
-      border-radius: 15px;
+      border-radius: 4px;
       font-size: 0.8rem;
     }
     .status {
+      background-color: #f6dbdd;
       color: #d9534f;
-      font-size: 0.85rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      padding: 3px 8px;
+    }
+    .balance-card {
+      max-width: 380px;
+      margin: 20px auto;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      background-color: #fff;
+    }
+
+    .balance-value {
+      font-size: 1.2rem;
       font-weight: 600;
+    }
+
+    .amount {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .amount.in {
+      color: #1c8c44;
+    }
+
+    .amount.out {
+      color: #d22d2d;
+    }
+
+    .report-link {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #2b55ff;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .report-link a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .report-link a:hover {
+      cursor: pointer;
+    }
+     .fixed-bottom{
+      position: fixed;
+      bottom: 0;
+      z-index: 1050;
+      background-color: white;
+      display: flex;
+      align-items: center;
+    }
+    .fixed-bottom button {
+      position: relative;
+    }
+    /* Make iframe responsive inside modal */
+    .form-iframe {
+      width: 100%;
+      height: 80vh;
+      border: none;
     }
   </style>
 
 </head>
 <body style="font-family: Arial; margin: 8px;">
-  <div class="">
-    <div class="col-sm bg-info mb-2 p-2">
-      Cash In
-      <div id="cashin" style="font-size: 18px;"></div>
+  
+  <div class="balance-card">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <h6 class="mb-0">Net Balance</h6>
+      <div class="balance-value" id="balance">Loading...</div>
     </div>
-    
-    <div class="col-sm bg-secondary mb-2 p-2">
-      Cash Out
-      <div id="cashout" style="font-size: 18px;"></div>
+
+    <div class="border-top pt-3">
+      <div class="d-flex justify-content-between">
+        <span>Total In (+)</span>
+        <span class="amount in" id="cashin">Loading...</span>
+      </div>
+
+      <div class="d-flex justify-content-between mt-2">
+        <span>Total Out (−)</span>
+        <span class="amount out" id="cashout">Loading...</span>
+      </div>
     </div>
-    
-    <div class="col-sm bg-success mb-2 p-2">
-      Balance
-      <div id="balance" style="font-size: 18px;"></div>
+
+    <div class="report-link mt-3">
+      <a href="#">View reports &nbsp;›</a>
     </div>
   </div>
   <div id="result" class=""></div>
-  <div id="trans" class=""></div>
+  <div id="trans" class="" style="margin-bottom: 40px;"></div>
+  <div class="fixed-bottom d-flex justify-content-center align-items-center bg-light py-2" style="gap: 1rem;">
+  <!-- Button to Open the Modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#googleFormModalcashin">
+      Cash In
+    </button>
+    <!-- Button to Open the Modal -->
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#googleFormModalcashout">
+      Cash Out
+    </button>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="googleFormModalcashin" tabindex="-1" aria-labelledby="googleFormModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="googleFormModalLabel">Cash In Entry</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          <!-- Embed Google Form -->
+          <iframe 
+            src="https://docs.google.com/forms/d/e/1FAIpQLSfnyANuSOOlJw18n2-gx309qCSwe9E_ZK4pSAC9jNayITdxHA/viewform" 
+            width="100%" 
+            height="600" 
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0">
+            Loading…
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="googleFormModalcashout" tabindex="-1" aria-labelledby="googleFormModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="googleFormModalLabel">Cash In Entry</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          <!-- Embed Google Form -->
+          <iframe 
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdpKbDEAQmofyt44-ly1Teai59NBLHJE7xjsgGOtVGlrDbXxQ/viewform" 
+            width="100%" 
+            height="600" 
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0">
+            Loading…
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>

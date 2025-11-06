@@ -130,8 +130,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const dateB = new Date(b.Date);
       return dateB - dateA; // descending order
     });
-    // Step 2: Take latest 10
-    const latest10 = sorted.slice(0, 10);
+    // Step 2: Take latest 20
+    const latest20 = sorted.slice(0, 20);
 
     // 2ndShed Filter
     const shedData = data.filter((r) =>
@@ -149,8 +149,8 @@ document.addEventListener("DOMContentLoaded", () => {
     resultDiv.innerHTML = `
       ${createTable(formatSummary)}
     `;
-    trans.innerHTML = `<h6>Latest 10 Transaction</h6>
-      ${createCards(latest10)}`
+    trans.innerHTML = `<b>Latest 20 Transaction</b>
+      ${createCards(latest20)}`
   }
 
 

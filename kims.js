@@ -79,15 +79,34 @@ document.addEventListener("DOMContentLoaded", () => {
   // }
 
   function formatTo12Hour(timeStr) {
-  // Split hours, minutes, seconds
-  let [hour, minute] = timeStr.split(':');
-  hour = parseInt(hour, 10);
+    // Split hours, minutes, seconds
+    let [hour, minute] = timeStr.split(':');
+    hour = parseInt(hour, 10);
 
-  const ampm = hour >= 12 ? 'PM' : 'AM';
-  hour = hour % 12 || 12; // Convert 0 -> 12, 13 -> 1, etc.
+    const ampm = hour >= 12 ? 'PM' : 'AM';
+    hour = hour % 12 || 12; // Convert 0 -> 12, 13 -> 1, etc.
 
-  return `${hour}:${minute.padStart(2, '0')} ${ampm}`;
-}
+    return `${hour}:${minute.padStart(2, '0')} ${ampm}`;
+  }
+
+  window.handleSearch = function (q) {
+    console.log('Search for:', q);
+    // call API or filter local data
+    //let dataReport = [...allTheData.data];
+    let returnData = []
+    if (q !== '') {
+      returnData = [...allTheData.data].filter((r) => r['Cash In'] && r.Remarks?.toLowerCase().includes(q?.toLowerCase()));
+    }else {
+      returnData = [...dataReport.data];
+    }
+    partyreportspopupLabel.innerHTML = `<h5>${q}</h5>`
+    const sorted = [...returnData].sort((a, b) => {
+      const dateA = new Date(a.Date);
+      const dateB = new Date(b.Date);
+      return dateB - dateA; // descending order
+    });
+    trans.innerHTML = `${createCards(sorted, q)}`;
+  }
 
   function processData(data) {
     // Clean numeric values
@@ -146,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Step 2: Take latest 10
     //const latest20 = sorted.slice(0, 20);
 
-   
+
     const formatSummary = partySummary.filter(ps => ps.Party === party1 || ps.Party === party2 || ps.Party === party3).sort((a, b) => b["Cash In"] - a["Cash In"]).map(({ Party, "Cash In": CashIn }) => ({
       Party,
       "Cash In": CashIn.toLocaleString("en-IN", {
@@ -161,9 +180,13 @@ document.addEventListener("DOMContentLoaded", () => {
     trans.innerHTML = `${createCards(sorted)}`
   }
 
+
+
   window.openReports = function (party) {
     //console.log('Clicked:', party);
-    partyreportspopupLabel.innerHTML=`<h5>${party}</h5>`
+    partyreportspopupLabel.innerHTML = `<h5>${party}</h5>`
+
+    searchInput.value='';
 
     const partyData = allTheData.data.filter((r) => r.Party === party);
     const sorted = [...partyData].sort((a, b) => {
@@ -176,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function createTable(rows) {
     if (rows.length === 0) return "<p>No data available.</p>";
-//data-bs-toggle="modal" data-bs-target="#partyreportspopup"
+    //data-bs-toggle="modal" data-bs-target="#partyreportspopup"
     let html = '';
     rows.forEach((r) => {
       html += `<div onclick="openReports('${r['Party']}')"    style="background: linear-gradient(90deg, #eff6ff 0%, #dbeafe 100%);
@@ -200,12 +223,12 @@ document.addEventListener("DOMContentLoaded", () => {
     return html;
   }
 
-  function createCards(rows, party= 'All') {
+  function createCards(rows, party = 'All') {
     const totalSum = rows.reduce((sum, item) => sum + item['Cash In'], 0);
-    let html = `<div class="mt-2 mb-2 text-center" style="font-size: 0.65rem">View ${party} Transactions: ${totalSum.toLocaleString("en-IN", {
-        style: "currency",
-        currency: "INR"
-      })} (${rows.length})</div>`;
+    let html = `<div class="mt-2 mb-2 text-center" style="font-size: 0.65rem">View <b>${party}</b> Transactions: ${totalSum.toLocaleString("en-IN", {
+      style: "currency",
+      currency: "INR"
+    })} (${rows.length})</div>`;
     rows.forEach((r) => {
       if (r["Cash In"]) {
         html += `<div class="payment-card in mb-2">
@@ -253,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           <div class="d-flex align-items-center gap-2">
             <span class="tag">${r.Category}</span>
-            <span class="status">${r.Mode === '' ? r.Mode :'Cash'}</span>
+            <span class="status">${r.Mode}</span>
             <span class="party-label">${r.Date}</span>
           </div>
           <div class='border-top pt-1 mt-1' style='font-size: 0.7rem'>Entry By: ${r["Enter By"]} at ${r["Timestamp"] == "" ? r['Time'] : formatTo12Hour(r["Timestamp"].slice(-8))}</div>

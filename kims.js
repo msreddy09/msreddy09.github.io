@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const dateB = new Date(b.Date);
       return dateB - dateA; // descending order
     });
-    trans.innerHTML = `${createCards(sorted, party)}`;sh
+    trans.innerHTML = `${createCards(sorted, party)}`;
   };
 
   function createTable(rows) {

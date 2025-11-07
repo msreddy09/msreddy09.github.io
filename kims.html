@@ -101,10 +101,9 @@
 
     .report-link {
       text-align: center;
-      margin-top: 15px;
+      margin-top: 8px;
       font-weight: 600;
       color: #2b55ff;
-      text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
@@ -225,6 +224,22 @@
             width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">
             Loading…
           </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reports Popup-->
+   <div class="modal fade" id="partyreportspopup" tabindex="-1" aria-labelledby="partyreportspopup"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="partyreportspopupLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div id="reportsresult"></div>
         </div>
       </div>
     </div>

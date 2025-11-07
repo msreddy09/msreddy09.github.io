@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           <div class="d-flex align-items-center gap-2">
             <span class="tag">${r.Category}</span>
-            <span class="status">${r.Mode || 'Cash'}</span>
+            <span class="status">${r.Mode === '' ? r.Mode :'Cash'}</span>
             <span class="party-label">${r.Date}</span>
           </div>
           <div class='border-top pt-1 mt-1' style='font-size: 0.7rem'>Entry By: ${r["Enter By"]} at ${r["Timestamp"] == "" ? r['Time'] : formatTo12Hour(r["Timestamp"].slice(-8))}</div>

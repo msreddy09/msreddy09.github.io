@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (q !== '') {
       returnData = [...allTheData.data].filter((r) => r['Cash In'] && r.Remarks?.toLowerCase().includes(q?.toLowerCase()));
     }else {
-      returnData = [...dataReport.data];
+      returnData = [...allTheData.data];
     }
     partyreportspopupLabel.innerHTML = `<h5>${q}</h5>`
     const sorted = [...returnData].sort((a, b) => {

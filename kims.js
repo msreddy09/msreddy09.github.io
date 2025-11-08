@@ -50,33 +50,109 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  document.addEventListener('click', showReportsPopup);
 
-  // function handleFileUpload(event) {
-  //   const file = event.target.files[0];
-  //   if (!file) return;
+  function showReportsPopup() {
+    // Get today's date and calculate last 3 months range
+    const today = new Date();
+    const threeMonthsAgo = new Date();
+    threeMonthsAgo.setMonth(today.getMonth() - 3);
 
-  //   const fileName = file.name.toLowerCase();
+    // Filter data for last 3 months
+    const filtered = allTheData?.data?.filter((item) => {
+      const d = new Date(item.Date);
+      return d >= threeMonthsAgo && d <= today;
+    });
 
-  //   if (fileName.endsWith(".csv")) {
-  //     Papa.parse(file, {
-  //       header: true,
-  //       dynamicTyping: true,
-  //       complete: (results) => processData(results.data),
-  //     });
-  //   } else if (fileName.endsWith(".xls") || fileName.endsWith(".xlsx")) {
-  //     const reader = new FileReader();
-  //     reader.onload = (e) => {
-  //       const data = new Uint8Array(e.target.result);
-  //       const workbook = XLSX.read(data, { type: "array" });
-  //       const sheetName = workbook.SheetNames[0];
-  //       const sheetData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
-  //       processData(sheetData);
-  //     };
-  //     reader.readAsArrayBuffer(file);
-  //   } else {
-  //     alert("Please upload a CSV or Excel file.");
-  //   }
-  // }
+    // Group and sum "Cash Out" by month
+    const monthlyTotals = {};
+    filtered.forEach((item) => {
+      const monthName = new Date(item.Date).toLocaleString('default', { month: 'short', year: 'numeric' });
+      monthlyTotals[monthName] = (monthlyTotals[monthName] || 0) + item['Cash Out'];
+    });
+
+    const labels = Object.keys(monthlyTotals);
+    const values = Object.values(monthlyTotals);
+
+    // Chart.js configuration
+    const ctx = document.getElementById('cashOutChart');
+    window.cashOutChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [
+          {
+            label: 'Amount In (₹)',
+            data: values,
+            backgroundColor: 'rgba(45, 190, 234, 0.6)',
+            borderColor: 'rgba(26, 80, 165, 1)',
+            borderWidth: 1,
+            borderRadius: 8,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false, // prevents height bloating
+        plugins: {
+          legend: { display: true, position: 'bottom' },
+        },
+        scales: {
+          y: { beginAtZero: true },
+        },
+      },
+    });
+    //category chart
+    // Group Cash In totals by Category
+    const categoryTotals = {};
+    allTheData?.data?.forEach(entry => {
+      if (entry["Cash Out"] > 0) {
+        const cat = entry.Category;
+        categoryTotals[cat] = (categoryTotals[cat] || 0) + entry["Cash Out"];
+      }
+    });
+
+    const categories = Object.keys(categoryTotals);
+    const cashInValues = Object.values(categoryTotals);
+
+    const ctx1 = document.getElementById('categoryChart');
+    window.cashOutChart = new Chart(ctx1, {
+      type: 'bar',
+      data: {
+        labels: categories,
+        datasets: [{
+          label: 'Amount In (₹)',
+          data: cashInValues,
+          borderWidth: 1,
+          backgroundColor: 'rgba(54, 162, 235, 0.6)',
+          borderColor: 'rgba(54, 162, 235, 1)'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              callback: function (value) {
+                return '₹' + value.toLocaleString('en-IN');
+              }
+            }
+          }
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (context) => '₹' + context.parsed.y.toLocaleString('en-IN')
+            }
+          }
+        }
+      }
+    });
+
+  }
 
   function formatTo12Hour(timeStr) {
     // Split hours, minutes, seconds
@@ -96,8 +172,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let returnData = []
     if (q !== '') {
       returnData = [...allTheData.data].filter((r) => r['Cash In'] && r.Remarks?.toLowerCase().includes(q?.toLowerCase()));
-    }else {
-      returnData = [...allTheData.data];
+    } else {
+      returnData = [...dataReport.data];
     }
     partyreportspopupLabel.innerHTML = `<h5>${q}</h5>`
     const sorted = [...returnData].sort((a, b) => {
@@ -186,7 +262,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //console.log('Clicked:', party);
     partyreportspopupLabel.innerHTML = `<h5>${party}</h5>`
 
-    searchInput.value='';
+    searchInput.value = '';
 
     const partyData = allTheData.data.filter((r) => r.Party === party);
     const sorted = [...partyData].sort((a, b) => {
@@ -286,6 +362,8 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     return html;
   }
+
+
 
 
 

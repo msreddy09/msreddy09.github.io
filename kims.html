@@ -72,13 +72,14 @@
       padding: 3px 8px;
     }
 
-    .balance-card {
+    .balance-card , #result{
       max-width: 420px;
-      margin: 10px 0 20px auto;
+      margin: 10px auto;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      padding: 20px;
+      padding: 10px;
       background-color: #fff;
+      font-size: .9rem;
     }
 
     .balance-value {
@@ -135,12 +136,72 @@
       height: 80vh;
       border: none;
     }
+
+
+    body {
+      background: #f8fafc;
+    }
+
+    .card {
+      border-radius: 1rem;
+    }
+
+    canvas {
+      width: 100% !important;
+      height: auto !important;
+    }
+
+    @media (max-width: 576px) {
+      h4.card-title {
+        font-size: 1.1rem;
+      }
+
+      .card {
+        padding: 0.5rem;
+      }
+    }
+
+    body {
+      background: #f8fafc;
+    }
+
+    .card {
+      border-radius: 1rem;
+    }
+
+    .chart-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      height: 300px;
+      /* fixed, safe responsive height */
+    }
+
+    canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    @media (max-width: 576px) {
+      .chart-wrapper {
+        height: 240px;
+        /* smaller height for phones */
+      }
+
+      h4.card-title {
+        font-size: 1.1rem;
+      }
+    }
   </style>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
 </head>
 
 <body style="font-family: Arial; margin: 8px;">
-  <!-- <div class="d-grid gap-1">
+  <div class="container">
+    <!-- <div class="d-grid gap-1">
     
     <div class="card shadow-sm p-2 d-flex justify-content-between flex-row align-items-center">
       <span>Balakrishna Idamakanti</span>
@@ -153,96 +214,105 @@
   </div> -->
 
 
-  <div class="balance-card">
-    <div class="d-flex justify-content-between align-items-center mb-2">
-      <h6 class="mb-0">Net Balance</h6>
-      <div class="balance-value" id="balance">Loading...</div>
-    </div>
-
-    <div class="border-top pt-3">
-      <div class="d-flex justify-content-between">
-        <span>Total In (+)</span>
-        <span class="amount in" id="cashin">Loading...</span>
+    <div class="balance-card">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h6 class="mb-0">Net Balance</h6>
+        <div class="balance-value" id="balance">Loading...</div>
       </div>
 
-      <div class="d-flex justify-content-between mt-2">
-        <span>Total Out (−)</span>
-        <span class="amount out" id="cashout">Loading...</span>
-      </div>
-    </div>
-
-    <div class="report-link mt-3">
-      <a href="#">View reports &nbsp;›</a>
-    </div>
-  </div>
-  <div id="result" class="d-grid gap-1"></div>
-  <form class="d-flex mt-3" role="search" onsubmit="event.preventDefault(); handleSearch(searchInput.value);">
-    <input id="searchInput" class="form-control me-2" type="search" placeholder="Search by expense" aria-label="Search">
-    <button class="btn btn-primary" type="submit">Search</button>
-  </form>
-  <div id="trans" class="" style="margin-bottom: 40px;"></div>
-  <div class="fixed-bottom d-flex justify-content-center align-items-center bg-light py-2" style="gap: 1rem;">
-    <!-- Button to Open the Modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#googleFormModalcashin">
-      Cash In
-    </button>
-    <!-- Button to Open the Modal -->
-    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#googleFormModalcashout">
-      Cash Out
-    </button>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="googleFormModalcashin" tabindex="-1" aria-labelledby="googleFormModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="googleFormModalLabel">Cash In Entry</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="border-top pt-3">
+        <div class="d-flex justify-content-between">
+          <span>Total In (+)</span>
+          <span class="amount in" id="cashin">Loading...</span>
         </div>
-        <div class="modal-body p-0">
-          <!-- Embed Google Form -->
-          <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLSfnyANuSOOlJw18n2-gx309qCSwe9E_ZK4pSAC9jNayITdxHA/viewform"
-            width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">
-            Loading…
-          </iframe>
+
+        <div class="d-flex justify-content-between mt-2">
+          <span>Total Out (−)</span>
+          <span class="amount out" id="cashout">Loading...</span>
         </div>
       </div>
+
+      <div class="report-link mt-1">
+        <a href="#" id="reportspop" data-bs-toggle="modal" data-bs-target="#partyreportspopup">View reports &nbsp;›</a>
+      </div>
     </div>
-  </div>
-  <!-- Modal -->
-  <div class="modal fade" id="googleFormModalcashout" tabindex="-1" aria-labelledby="googleFormModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="googleFormModalLabel">Cash In Entry</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body p-0">
-          <!-- Embed Google Form -->
-          <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLSdpKbDEAQmofyt44-ly1Teai59NBLHJE7xjsgGOtVGlrDbXxQ/viewform"
-            width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">
-            Loading…
-          </iframe>
+    <div id="result" class="d-grid gap-1"> Loading...</div>
+    <form class="d-flex mt-3" role="search" onsubmit="event.preventDefault(); handleSearch(searchInput.value);">
+      <input id="searchInput" class="form-control me-2" type="search" placeholder="Search by expense"
+        aria-label="Search">
+      <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+    <div id="trans" class="" style="margin-bottom: 40px;"></div>
+    <div class="fixed-bottom d-flex justify-content-center align-items-center bg-light py-2" style="gap: 1rem;">
+      <!-- Button to Open the Modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#googleFormModalcashin">
+        Cash In
+      </button>
+      <!-- Button to Open the Modal -->
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#googleFormModalcashout">
+        Cash Out
+      </button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="googleFormModalcashin" tabindex="-1" aria-labelledby="googleFormModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="googleFormModalLabel">Cash In Entry</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-0">
+            <!-- Embed Google Form -->
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLSfnyANuSOOlJw18n2-gx309qCSwe9E_ZK4pSAC9jNayITdxHA/viewform"
+              width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">
+              Loading…
+            </iframe>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- Reports Popup-->
-  <div class="modal fade" id="partyreportspopup" tabindex="-1" aria-labelledby="partyreportspopup" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="partyreportspopupLabel"></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!-- Modal -->
+    <div class="modal fade" id="googleFormModalcashout" tabindex="-1" aria-labelledby="googleFormModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="googleFormModalLabel">Cash In Entry</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-0">
+            <!-- Embed Google Form -->
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLSdpKbDEAQmofyt44-ly1Teai59NBLHJE7xjsgGOtVGlrDbXxQ/viewform"
+              width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">
+              Loading…
+            </iframe>
+          </div>
         </div>
-        <div class="modal-body p-0">
-          <div id="reportsresult"></div>
+      </div>
+    </div>
+
+    <!-- Reports Popup-->
+    <div class="modal fade" id="partyreportspopup" tabindex="-1" aria-labelledby="partyreportspopup" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h6 class="modal-title">Reports</h6>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <div style="position:relative; height:300px;">
+              <span style="font-size: 0.75rem;">Last 4 months expenditure</span>
+              <canvas id="cashOutChart"></canvas>
+            </div>
+            <div class="mt-3">
+              <span style="font-size: 0.75rem;">Category wise expenditure</span>
+              <canvas id="categoryChart" style="max-height: 300px; width: 100%;"></canvas>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -257,11 +327,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <script src="kims.js" defer></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
     crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </body>
 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Google Sheets Form</title>
+</head>
+
+<body>
+    <form id="myForm">
+        <input type="text" name="name" placeholder="Name" value="Sudha" required><br>
+        <input type="email" name="email" placeholder="Email" value="m@gmail.com" required><br>
+        <textarea name="message" placeholder="Message" value="mssg">Message</textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const proxy = "https://cors-anywhere.herokuapp.com/";
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbz7MajJbSt6Vw9vvt8XLdL6L_EtL2YFrB-aSMtwxgQjkJwO5o6tDiQYgttBjPyzr_QQ5w/exec'; // Paste URL here
+
+        document.getElementById('myForm').addEventListener('submit', e => {
+            e.preventDefault();
+            const formData = Object.fromEntries(new FormData(e.target));
+
+            fetch(proxy + scriptURL, {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: { 'Content-Type': 'application/json' }
+            })
+                .then(async res => {
+                    const text = await res.text(); // read raw response
+                    try {
+                        const data = JSON.parse(text);
+                        alert('Data saved successfully!');
+                        console.log('✅ Response:', data);
+                    } catch {
+                        console.error('❌ Not JSON:', text);
+                       // alert('Server returned HTML (check Apps Script permissions).');
+                    }
+                })
+                .catch(err => alert('Error: ' + err.message));
+        });
+    </script>
+</body>
+
+</html>

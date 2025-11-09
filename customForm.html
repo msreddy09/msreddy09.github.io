@@ -21,7 +21,7 @@
             e.preventDefault();
             const formData = Object.fromEntries(new FormData(e.target));
 
-            fetch(proxy + scriptURL, {
+            fetch(scriptURL, {
                 method: 'POST',
                 body: JSON.stringify({
                   "name": "John Doe",

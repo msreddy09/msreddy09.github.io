@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       returnData = [...dataReport.data];
     }
-    partyreportspopupLabel.innerHTML = `<h5>${q}</h5>`
+    //partyreportspopupLabel.innerHTML = `<h5>${q}</h5>`
     const sorted = [...returnData].sort((a, b) => {
       const dateA = new Date(a.Date);
       const dateB = new Date(b.Date);

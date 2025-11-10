@@ -260,7 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.openReports = function (party) {
     //console.log('Clicked:', party);
-    partyreportspopupLabel.innerHTML = `<h5>${party}</h5>`
+    //partyreportspopupLabel.innerHTML = `<h5>${party}</h5>`
 
     searchInput.value = '';
 

@@ -6,7 +6,7 @@ const party1 = "Sudhakar Reddy Medagam";
 const party2 = "Balakrishna Idamakanti";
 const party3 = "Lakshmi Reddy Kypu";
 
-const baseurl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQe3k3p3r9u5jHBhE9cE0yLXqk_WLC_EofcSAETSmkmC_oIA6h8tDjfugc-q_L9XZodfNo3RHjsrW0G/pub?output=csv"
+const baseurl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQe3k3p3r9u5jHBhE9cE0yLXqk_WLC_EofcSAETSmkmC_oIA6h8tDjfugc-q_L9XZodfNo3RHjsrW0G/pub?gid=1125769505&single=true&output=csv"
 const url = `${baseurl}&nocache=${new Date().getTime()}`;
 document.addEventListener("DOMContentLoaded", () => {
   // const fileInput = document.getElementById("fileInput");

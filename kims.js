@@ -299,6 +299,16 @@ document.addEventListener("DOMContentLoaded", () => {
     return html;
   }
 
+  function toIST(dateStr) {
+    const utcDate = new Date(dateStr + 'Z'); // Treat as UTC
+    return new Date(utcDate.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+  }
+
+
+
+
+
+
   function createCards(rows, party = 'All') {
     const totalSum = rows.reduce((sum, item) => sum + item['Cash In'], 0);
     let html = `<div class="mt-2 mb-2 text-center" style="font-size: 0.65rem">View <b>${party}</b> Transactions: ${totalSum.toLocaleString("en-IN", {
@@ -329,7 +339,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <span class="status">${r.Mode}</span>
             <span class="party-label">${r.Date}</span>
           </div>
-          <div class='border-top pt-1 mt-1' style='font-size: 0.7rem'>Entry By: ${r["Enter By"]} at ${r["Timestamp"] == "" ? r['Time'] : formatTo12Hour(r["Timestamp"].slice(-8))}</div>
+          <div class='border-top pt-1 mt-1' style='font-size: 0.7rem'>Entry By: ${r["Enter By"]} at ${r["Timestamp"] == "" ? r['Time'] : new Date(new Date(r["Timestamp"]).getTime() + 13.5 * 60 * 60 * 1000)}</div>
         </div>`
 
       } else {
@@ -353,19 +363,32 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="d-flex align-items-center gap-2">
             <span class="tag">${r.Category}</span>
             <span class="status">${r.Mode}</span>
-            <span class="party-label">${r.Date}</span>
+            <span class="party-label">${r.date}</span>
           </div>
-          <div class='border-top pt-1 mt-1' style='font-size: 0.7rem'>Entry By: ${r["Enter By"]} at ${r["Timestamp"] == "" ? r['Time'] : formatTo12Hour(r["Timestamp"].slice(-8))}</div>
+          <div class='border-top pt-1 mt-1' style='font-size: 0.7rem'>Entry By: ${r["Enter By"]} at ${r["Timestamp"] == "" ? r['Time'] : new Date(new Date(r["Timestamp"]).getTime() + 13.5 * 60 * 60 * 1000)}</div>
 
       </div>`
       }
     })
     return html;
   }
+  // Sideer bar
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("overlay");
 
+  document.getElementById("openSidebar").onclick = () => {
+    sidebar.style.left = "0px";
+    overlay.style.display = "block";
+  };
 
+  document.getElementById("closeSidebar").onclick = closeSidebar;
+  overlay.onclick = closeSidebar;
 
+  function closeSidebar() {
+    sidebar.style.left = "-260px";
+    overlay.style.display = "none";
+  }
 
-
+  // end of sider bar
 
 });

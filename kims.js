@@ -2,6 +2,11 @@
 // <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 // <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
+// import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+
+
+
 const party1 = "Sudhakar Reddy Medagam";
 const party2 = "Balakrishna Idamakanti";
 const party3 = "Lakshmi Reddy Kypu";

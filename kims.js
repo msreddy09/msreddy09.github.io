@@ -368,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="d-flex align-items-center gap-2">
             <span class="tag">${r.Category}</span>
             <span class="status">${r.Mode}</span>
-            <span class="party-label">${r.date}</span>
+            <span class="party-label">${r.Date}</span>
           </div>
           <div class='border-top pt-1 mt-1' style='font-size: 0.7rem'>Entry By: ${r["Enter By"]} at ${r["Timestamp"] == "" ? r['Time'] : new Date(new Date(r["Timestamp"]).getTime() + 13.5 * 60 * 60 * 1000)}</div>
 
